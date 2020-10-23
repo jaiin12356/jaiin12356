@@ -11,7 +11,7 @@ const serverPort = 80;
 /************* Routing **************/
 //웹페이지의 세부 주소를 지정한다.
 server.use('/',            require('./server'));
-server.use('/api',         require('./api'));
+server.use('/sjapi',        require('./sjapi'));
 server.use('/api1',        require('./api1'));
 
 /************* Running server **************/
