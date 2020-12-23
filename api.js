@@ -3,7 +3,7 @@
 
 /************* include library **************/
 var express = require('express');
-var mysql   = require('mysql');
+var db   = require('mysql');
 var api  = express();
 
 var dbInfo={
@@ -14,19 +14,18 @@ var dbInfo={
     multipleStatements:true
 }
 
-var connection=mysql.createConnection({
+var connection=db.createConnection({
     host:dbInfo.host,
     user: dbInfo.user,
     password:dbInfo.password,
     database:dbInfo.database
 });
 
-
 /************* Routing **************/
 //api Index
 api.get('/sensor', (req, res, next) => {
     
-    connection.connect();
+    connection.connect();   
     connection.query('SELECT * FROM sensor_data', function(error, results, fielads){
         if(error){
             console.log(error);

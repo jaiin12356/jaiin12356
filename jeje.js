@@ -36,6 +36,8 @@ api.get('/sensor', (req, res, next) => {
     console.log(results);
     res.send(results);
     });
+    connection.end();
+    res.send("Welcome is API Function")
   //  res.send("Welcome is API Fucntion");
 });
 
