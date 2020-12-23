@@ -30,9 +30,17 @@ server.get('/study', (req, res, next) => {
 
     // http://localhost/study?id=1234&name=백석대
 
+<<<<<<< HEAD
     let student = {
         id : 0,
         name : "손님"
+=======
+    console.log(req.query.name);
+    let student = {
+        id : 0,
+        name : "test",
+        age : 5
+>>>>>>> dd5ea6383faf765557ebb08b8ef2a753b0b14797
     }
 
     if(req.query.id !== null && req.query.id !== undefined){
@@ -41,8 +49,18 @@ server.get('/study', (req, res, next) => {
     if(req.query.name !== null && req.query.name !== undefined){
         student.name = req.query.name;
     }
+<<<<<<< HEAD
   
     console.log(student);
+=======
+
+    if(req.query.age !== null && req.query.age !== undefined){
+        student.age = req.query.age;
+    }
+    
+    console.log(student);
+    console.log("console.log 는 이렇게 사용합니다.");
+>>>>>>> dd5ea6383faf765557ebb08b8ef2a753b0b14797
     res.render("iWillStudy.html", student);
 });
 
@@ -60,8 +78,43 @@ server.get('/99dan',  (req, res, next) => {
     if(req.query.primary !== null && req.query.primary !== undefined){
         gugudan.primary = req.query.primary;
     }
+<<<<<<< HEAD
   
     res.render("99dan.html", gugudan);
 });
 
 module.exports = server;
+=======
+
+    /* integer check */
+    let val = parseInt(req.query.primary);
+    /*
+    if(조건){
+        참일때 실행되는 섹타
+    }else{
+        거짓일때 싫애되는 섹터
+    }
+    */
+    //console.log(Number.isInteger(val));
+    if( Number.isInteger(val) == true  ){
+
+        // 2단부터 9단까지만 구동되게 
+        //if(val >  && val  )
+        if(val > 1 && val < 10){
+            res.render("99dan.html", gugudan); 
+        }else{
+            res.send("유효하지 않은 값입니다. (2~9)");
+
+        }
+        
+
+    }else{
+
+        res.send("숫자가 아닙니다.");
+    }
+  
+    
+});
+
+module.exports = server;
+>>>>>>> dd5ea6383faf765557ebb08b8ef2a753b0b14797

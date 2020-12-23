@@ -8,6 +8,7 @@ var api  = express();
 
 var dbInfo={
     host: 'ls-712a3de0f216372c332622b5ed5c6f22fe2f67bd.cu0xyssgzj43.ap-northeast-2.rds.amazonaws.com',
+    user: 'dbmasteruser',
     port:'3306',
     password:'buackr!!##',
     database:'BU',
@@ -23,17 +24,19 @@ var connection=db.createConnection({
 
 /************* Routing **************/
 //api Index
-api.get('/sensor', (req, res, next) => {
+api.get('/', (req, res, next) => {
     
     connection.connect();   
     connection.query('SELECT * FROM sensor_data', function(error, results, fielads){
         if(error){
             console.log(error);
         }
-
+        
         console.log(results);
+        res.send(results);
+        
     });
-    res.send("Welcome is API Fucntion");
+    
 });
 
 /************* Routing **************/
